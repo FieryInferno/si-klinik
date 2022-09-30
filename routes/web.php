@@ -19,3 +19,4 @@ Route::get('/', function () {
 Route::get('/login', function () {
   return view('welcome');
 });
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'auth']);

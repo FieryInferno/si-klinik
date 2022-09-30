@@ -444,9 +444,8 @@
       }
     </style>
     <meta charset="UTF-8" />
-    <link rel="icon" href="http://rubick-vue.left4code.com/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Midone - Vuejs Admin Template</title>
+    <title>Login</title>
     <script type="module" crossorigin="" src="http://rubick-vue.left4code.com/assets/index.20120bfc.js"></script>
     <link rel="stylesheet" href="http://rubick-vue.left4code.com/assets/index.68055fc5.css" />
     <style data-cke="true">
@@ -3401,16 +3400,6 @@
         width: 100%;
       }
     </style>
-    <script id="__googleMapsScriptId" type="text/javascript" src="Midone%20-%20Vuejs%20Admin%20Template%20-%20Login_files/js" defer="defer" async=""></script>
-    <style></style>
-    <script type="text/javascript" charset="UTF-8" src="Midone%20-%20Vuejs%20Admin%20Template%20-%20Login_files/common.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="Midone%20-%20Vuejs%20Admin%20Template%20-%20Login_files/util.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="Midone%20-%20Vuejs%20Admin%20Template%20-%20Login_files/map.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="Midone%20-%20Vuejs%20Admin%20Template%20-%20Login_files/marker.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="Midone%20-%20Vuejs%20Admin%20Template%20-%20Login_files/overlay.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="Midone%20-%20Vuejs%20Admin%20Template%20-%20Login_files/onion.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="Midone%20-%20Vuejs%20Admin%20Template%20-%20Login_files/infowindow.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="Midone%20-%20Vuejs%20Admin%20Template%20-%20Login_files/controls.js"></script>
   </head>
   <body class="login">
     <div id="app" data-v-app="">
@@ -3434,11 +3423,30 @@
               <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
                 <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">Sign In</h2>
                 <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">Masuk ke aplikasi dengan sekali klik. Kelola semua dalam satu tempat</div>
+                @if ($errors->any())
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                      @endforeach
+                    </ul>
+                  </div>
+                @endif
                 <form action="{{ url('login') }}" method="post">
                   @csrf
                   <div class="intro-x mt-8">
-                    <input type="text" class="intro-x login__input form-control py-3 px-4 block" placeholder="Username" />
-                    <input type="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password" />
+                    <input
+                      type="text"
+                      class="intro-x login__input form-control py-3 px-4 block"
+                      placeholder="Username"
+                      name="username"
+                    />
+                    <input
+                      type="password"
+                      class="intro-x login__input form-control py-3 px-4 block mt-4"
+                      placeholder="Password"
+                      name="password"
+                    />
                   </div>
                   <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                     <button class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
