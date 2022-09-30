@@ -660,6 +660,7 @@
 
   for (i = 0; i < dropdown.length; i++) {
     dropdown[i].addEventListener("click", function() {
+      this.children[1].children[0].classList.toggle("rotate-180");
       this.classList.toggle("side-menu--open");
       var dropdownContent = this.nextElementSibling;
       if (dropdownContent.style.display === "block") {
