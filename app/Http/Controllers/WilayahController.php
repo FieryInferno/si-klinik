@@ -35,17 +35,12 @@ class WilayahController extends Controller
     ]);
   }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Wilayah  $wilayah
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Wilayah $wilayah)
-    {
-        //
-    }
+  public function update(Request $request, Wilayah $wilayah)
+  {
+    $request->validate(['nama' => 'required']);
+    $wilayah->update($request->all());
+    return redirect('wilayah')->with('success', 'Berhasil edit wilayah');
+  }
 
     /**
      * Remove the specified resource from storage.

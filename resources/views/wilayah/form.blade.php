@@ -6,7 +6,7 @@
         <h2 class="font-medium text-base mr-auto">{{ $title }}</h2>
       </div>
       <div class="p-5">
-        <form action="{{ url('wilayah') }}" method="POST">
+        <form action="{{ $data ? url('wilayah/' . $data->id) : url('wilayah') }}" method="POST">
           @csrf
           {{ $data ? method_field('PUT') : '' }}
           <div>
