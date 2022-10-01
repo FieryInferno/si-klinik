@@ -40,7 +40,16 @@
   @foreach ($data as $dataModal)
     <div class="modal overflow-y-auto" tabindex="-1" aria-hidden="false" data-tw-backdrop="" id="deleteModal{{ $dataModal->id }}" style="margin-top: 0px; margin-left: 0px; padding-left: 0px; z-index: 10000;">
       <div class="modal-dialog">
-        <div class="modal-content"><div class="modal-body p-10 text-center">This is totally awesome medium modal!</div></div>
+        <div class="modal-content">
+          <div class="modal-body p-10 text-center">
+            Apakah anda yakin akan menghapus data ini?
+            <form action="{{ url('wilayah/' . $dataModal->id) }}" method="post" class="text-right">
+              @csrf
+              {{ method_field('DELETE') }}
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   @endforeach

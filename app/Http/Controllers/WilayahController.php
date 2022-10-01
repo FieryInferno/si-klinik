@@ -42,14 +42,9 @@ class WilayahController extends Controller
     return redirect('wilayah')->with('success', 'Berhasil edit wilayah');
   }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Wilayah  $wilayah
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Wilayah $wilayah)
-    {
-        //
-    }
+  public function destroy(Wilayah $wilayah)
+  {
+    $wilayah->delete();
+    return redirect('wilayah')->with('success', 'Berhasil hapus wilayah');
+  }
 }
