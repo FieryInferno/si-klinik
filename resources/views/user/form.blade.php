@@ -23,7 +23,7 @@
             <select class="form-select mt-2 sm:mr-2" aria-label="Default select example" name="pegawai_id">
               <option disabled selected>Pilih pegawai</option>
               @foreach ($pegawai as $p)
-                <option value="{{ $p->id }}">{{ $p->nama }}</option>
+                <option value="{{ $p->id }}" <?= isset($data) && $data->pegawai_id === $p->id ? 'selected' : ''; ?>>{{ $p->nama }}</option>
               @endforeach
             </select>
           </div>
@@ -50,10 +50,10 @@
             <label class="form-label">Level</label>
             <select class="form-select mt-2 sm:mr-2" aria-label="Default select example" name="level">
               <option disabled selected>Pilih level</option>
-              <option value="admin">Admin</option>
-              <option value="staff">Staff</option>
-              <option value="doctor">Doctor</option>
-              <option value="billing">Billing</option>
+              <option value="admin" <?= isset($data) && $data->level === 'admin' ? 'selected' : ''; ?>>Admin</option>
+              <option value="staff" <?= isset($data) && $data->level === 'staff' ? 'selected' : ''; ?>>Staff</option>
+              <option value="doctor" <?= isset($data) && $data->level === 'doctor' ? 'selected' : ''; ?>>Doctor</option>
+              <option value="billing" <?= isset($data) && $data->level === 'billing' ? 'selected' : ''; ?>>Billing</option>
             </select>
           </div>
           <button class="btn btn-primary mt-5" type="submit">Submit</button>

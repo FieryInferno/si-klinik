@@ -41,6 +41,7 @@ class UserController extends Controller
     return view('user.form', [
       'title' => 'User',
       'data' => $user,
+      'pegawai' => Pegawai::all(),
     ]);
   }
 
