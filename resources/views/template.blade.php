@@ -8,6 +8,7 @@
     <script type="module" crossorigin="" src="http://rubick-vue.left4code.com/assets/index.20120bfc.js"></script>
     <link rel="stylesheet" href="http://rubick-vue.left4code.com/assets/index.68055fc5.css" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
   </head>
   <body class="main">
     <div id="app" data-v-app="">
@@ -654,34 +655,39 @@
       </div>
     </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script>
-  const dropdown = document.getElementsByClassName("dropdown"),
-        modal = document.getElementsByClassName('showModal');
-  let i;
+    $(document).ready( function () {
+      $('#myTable').DataTable();
+    } );
+    const dropdown = document.getElementsByClassName("dropdown"),
+          modal = document.getElementsByClassName('showModal');
+    let i;
 
-  for (i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function() {
-      this.children[1].children[0].classList.toggle("rotate-180");
-      this.classList.toggle("side-menu--open");
-      const dropdownContent = this.nextElementSibling;
-      if (dropdownContent.style.display === "block") {
-        dropdownContent.style.display = "none";
-      } else {
-        dropdownContent.style.display = "block";
-      }
-    });
-  }
-
-  for (i = 0; i < modal.length; i++) {
-    modal[i].addEventListener("click", function() {
-      const modalContent = document.getElementById(this.dataset.target);
-      modalContent.classList.toggle('show');
-      window.onclick = (event) => {
-        if (event.target == modalContent) {
-          modalContent.classList.toggle('show');
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+        this.children[1].children[0].classList.toggle("rotate-180");
+        this.classList.toggle("side-menu--open");
+        const dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
         }
-      }
-    });
-  }
+      });
+    }
+
+    for (i = 0; i < modal.length; i++) {
+      modal[i].addEventListener("click", function() {
+        const modalContent = document.getElementById(this.dataset.target);
+        modalContent.classList.toggle('show');
+        window.onclick = (event) => {
+          if (event.target == modalContent) {
+            modalContent.classList.toggle('show');
+          }
+        }
+      });
+    }
   </script>
 </html>

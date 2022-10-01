@@ -13,7 +13,7 @@
       </div>
     @endif
     <div class="overflow-x-auto">
-      <table class="table">
+      <table class="table" id="myTable">
         <thead>
           <tr>
             <th class="whitespace-nowrap">#</th>
