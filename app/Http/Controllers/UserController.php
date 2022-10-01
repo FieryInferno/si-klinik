@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -32,7 +33,14 @@ class UserController extends Controller
       'password' => 'required',
       'level' => 'required',
     ]);
-    User::create($request->all());
+
+    $user = new User;
+    $user->pegawai_id = $request->pegawai_id;
+    $user->username = $request->username;
+    $user->password = Hash::make($request->password);
+    $user->level = $request->level;
+
+    $user->save();
     return redirect('user')->with('success', 'Berhasil tambah user');
   }
 
@@ -47,8 +55,22 @@ class UserController extends Controller
 
   public function update(Request $request, User $user)
   {
-    $request->validate(['nama' => 'required']);
-    $user->update($request->all());
+    $request->validate([
+      'pegawai_id' => 'required',
+      'username' => 'required',
+      'level' => 'required',
+    ]);
+
+    $user->pegawai_id = $request->pegawai_id;
+    $user->username = $request->username;
+
+    if ($request->password) {
+      $user->password = Hash::make($request->password);
+    }
+
+    $user->level = $request->level;
+
+    $user->save();
     return redirect('user')->with('success', 'Berhasil edit user');
   }
 
