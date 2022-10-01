@@ -12,26 +12,17 @@ class WilayahController extends Controller
     return view('wilayah.index', ['title' => 'Wilayah']);
   }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function create()
+  {
+    return view('wilayah.form', ['title' => 'Wilayah']);
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  public function store(Request $request)
+  {
+    $request->validate(['nama' => 'required']);
+    Wilayah::create($request->all());
+    return redirect('wilayah')->with('success', 'Berhasil tambah wilayah');
+  }
 
     /**
      * Display the specified resource.
