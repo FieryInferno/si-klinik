@@ -9,7 +9,10 @@ class WilayahController extends Controller
 {
   public function index()
   {
-    return view('wilayah.index', ['title' => 'Wilayah']);
+    return view('wilayah.index', [
+      'title' => 'Wilayah',
+      'data' => Wilayah::all(),
+    ]);
   }
 
   public function create()

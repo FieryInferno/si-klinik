@@ -655,18 +655,31 @@
     </div>
   </body>
   <script>
-  var dropdown = document.getElementsByClassName("dropdown");
-  var i;
+  const dropdown = document.getElementsByClassName("dropdown"),
+        modal = document.getElementsByClassName('showModal');
+  let i;
 
   for (i = 0; i < dropdown.length; i++) {
     dropdown[i].addEventListener("click", function() {
       this.children[1].children[0].classList.toggle("rotate-180");
       this.classList.toggle("side-menu--open");
-      var dropdownContent = this.nextElementSibling;
+      const dropdownContent = this.nextElementSibling;
       if (dropdownContent.style.display === "block") {
         dropdownContent.style.display = "none";
       } else {
         dropdownContent.style.display = "block";
+      }
+    });
+  }
+
+  for (i = 0; i < modal.length; i++) {
+    modal[i].addEventListener("click", function() {
+      const modalContent = document.getElementById(this.dataset.target);
+      modalContent.classList.toggle('show');
+      window.onclick = (event) => {
+        if (event.target == modalContent) {
+          modalContent.classList.toggle('show');
+        }
       }
     });
   }

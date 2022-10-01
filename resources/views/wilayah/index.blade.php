@@ -22,13 +22,26 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="whitespace-nowrap">1</td>
-            <td class="whitespace-nowrap">Angelina</td>
-            <td class="whitespace-nowrap">Jolie</td>
-          </tr>
+          <?php $no = 1; ?>
+          @foreach ($data as $dataTable)
+            <tr>
+              <td class="whitespace-nowrap">{{ $no++ }}</td>
+              <td class="whitespace-nowrap">{{ $dataTable->nama }}</td>
+              <td class="whitespace-nowrap">
+                <a href="{{ url('wilayah/' . $dataTable->id) }}" class="btn btn-success">Edit</a>
+                <button class="btn btn-danger showModal" data-target="deleteModal{{ $dataTable->id }}">Hapus</button>
+              </td>
+            </tr>
+          @endforeach
         </tbody>
       </table>
     </div>
   </div>
+  @foreach ($data as $dataModal)
+    <div class="modal overflow-y-auto" tabindex="-1" aria-hidden="false" data-tw-backdrop="" id="deleteModal{{ $dataModal->id }}" style="margin-top: 0px; margin-left: 0px; padding-left: 0px; z-index: 10000;">
+      <div class="modal-dialog">
+        <div class="modal-content"><div class="modal-body p-10 text-center">This is totally awesome medium modal!</div></div>
+      </div>
+    </div>
+  @endforeach
 @endsection

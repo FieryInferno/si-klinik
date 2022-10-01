@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('/login', function () {
   return view('welcome');
 });
-Route::post('/login', [App\Http\Controllers\LoginController::class, 'auth']);
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'auth'])->name('login');
 Route::middleware('auth')->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
   Route::resource('wilayah', App\Http\Controllers\WilayahController::class);
