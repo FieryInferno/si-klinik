@@ -9,6 +9,15 @@
         <form action="{{ isset($data) ? url('pegawai/' . $data->id) : url('pegawai') }}" method="POST">
           @csrf
           {{ isset($data) ? method_field('PUT') : '' }}
+          @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
           <div>
             <label class="form-label">NIP</label>
             <input

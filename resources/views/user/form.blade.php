@@ -9,6 +9,15 @@
         <form action="{{ isset($data) ? url('user/' . $data->id) : url('user') }}" method="POST">
           @csrf
           {{ isset($data) ? method_field('PUT') : '' }}
+          @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
           <div>
             <label class="form-label">Pegawai</label>
             <select class="form-select mt-2 sm:mr-2" aria-label="Default select example" name="pegawai_id">
@@ -31,11 +40,21 @@
           <div>
             <label class="form-label">Password</label>
             <input
-              type="text"
+              type="password"
               class="form-control"
               placeholder="Password"
-              name="nama"
+              name="password"
             />
+          </div>
+          <div>
+            <label class="form-label">Level</label>
+            <select class="form-select mt-2 sm:mr-2" aria-label="Default select example" name="level">
+              <option disabled selected>Pilih level</option>
+              <option value="admin">Admin</option>
+              <option value="staff">Staff</option>
+              <option value="doctor">Doctor</option>
+              <option value="billing">Billing</option>
+            </select>
           </div>
           <button class="btn btn-primary mt-5" type="submit">Submit</button>
         </form>

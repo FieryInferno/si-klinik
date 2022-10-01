@@ -9,6 +9,15 @@
         <form action="{{ isset($data) ? url('wilayah/' . $data->id) : url('wilayah') }}" method="POST">
           @csrf
           {{ isset($data) ? method_field('PUT') : '' }}
+          @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
           <div>
             <label class="form-label">Nama Wilayah</label>
             <input

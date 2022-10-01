@@ -20,13 +20,18 @@ class UserController extends Controller
   {
     return view('user.form', [
       'title' => 'User',
-      'pegawai' => Pegawai::leftJoin('users', 'pegawais.id', '=', 'users.pegawai_id')->whereNull('users.pegawai_id')->get(),
+      'pegawai' => Pegawai::select('pegawais.id', 'pegawais.nama')->leftJoin('users', 'pegawais.id', '=', 'users.pegawai_id')->whereNull('users.pegawai_id')->get(),
     ]);
   }
 
   public function store(Request $request)
   {
-    $request->validate(['nama' => 'required']);
+    $request->validate([
+      'pegawai_id' => 'required',
+      'username' => 'required',
+      'password' => 'required',
+      'level' => 'required',
+    ]);
     User::create($request->all());
     return redirect('user')->with('success', 'Berhasil tambah user');
   }
