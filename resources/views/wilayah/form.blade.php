@@ -8,6 +8,7 @@
       <div class="p-5">
         <form action="{{ url('wilayah') }}" method="POST">
           @csrf
+          {{ $data ? method_field('PUT') : '' }}
           <div>
             <label class="form-label">Nama Wilayah</label>
             <input
@@ -15,6 +16,7 @@
               class="form-control"
               placeholder="Nama Wilayah"
               name="nama"
+              value="{{ $data ? $data->nama : '' }}"
             />
           </div>
           <button class="btn btn-primary mt-5" type="submit">Submit</button>

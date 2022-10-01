@@ -28,7 +28,7 @@
               <td class="whitespace-nowrap">{{ $no++ }}</td>
               <td class="whitespace-nowrap">{{ $dataTable->nama }}</td>
               <td class="whitespace-nowrap">
-                <a href="{{ url('wilayah/' . $dataTable->id) }}" class="btn btn-success">Edit</a>
+                <a href="{{ url('wilayah/' . $dataTable->id . '/edit') }}" class="btn btn-success">Edit</a>
                 <button class="btn btn-danger showModal" data-target="deleteModal{{ $dataTable->id }}">Hapus</button>
               </td>
             </tr>

@@ -27,27 +27,13 @@ class WilayahController extends Controller
     return redirect('wilayah')->with('success', 'Berhasil tambah wilayah');
   }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Wilayah  $wilayah
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Wilayah $wilayah)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Wilayah  $wilayah
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Wilayah $wilayah)
-    {
-        //
-    }
+  public function edit(Wilayah $wilayah)
+  {
+    return view('wilayah.form', [
+      'title' => 'Wilayah',
+      'data' => $wilayah,
+    ]);
+  }
 
     /**
      * Update the specified resource in storage.
