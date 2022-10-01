@@ -10,10 +10,12 @@
           @csrf
           {{ isset($data) ? method_field('PUT') : '' }}
           <div>
-            <select class="form-select mt-2 sm:mr-2" aria-label="Default select example">
-              <option>Chris Evans</option>
-              <option>Liam Neeson</option>
-              <option>Daniel Craig</option>
+            <label class="form-label">Pegawai</label>
+            <select class="form-select mt-2 sm:mr-2" aria-label="Default select example" name="pegawai_id">
+              <option disabled selected>Pilih pegawai</option>
+              @foreach ($pegawai as $p)
+                <option value="{{ $p->id }}">{{ $p->nama }}</option>
+              @endforeach
             </select>
           </div>
           <div>
@@ -22,18 +24,17 @@
               type="text"
               class="form-control"
               placeholder="Username"
-              name="nip"
+              name="username"
               value="{{ isset($data) ? $data->username : '' }}"
             />
           </div>
           <div>
-            <label class="form-label">Nama Pegawai</label>
+            <label class="form-label">Password</label>
             <input
               type="text"
               class="form-control"
-              placeholder="Nama Pegawai"
+              placeholder="Password"
               name="nama"
-              value="{{ isset($data) ? $data->nama : '' }}"
             />
           </div>
           <button class="btn btn-primary mt-5" type="submit">Submit</button>

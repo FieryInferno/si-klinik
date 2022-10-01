@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -17,7 +18,10 @@ class UserController extends Controller
 
   public function create()
   {
-    return view('user.form', ['title' => 'User']);
+    return view('user.form', [
+      'title' => 'User',
+      'pegawai' => Pegawai::leftJoin('users', 'pegawais.id', '=', 'users.pegawai_id')->whereNull('users.pegawai_id')->get(),
+    ]);
   }
 
   public function store(Request $request)
