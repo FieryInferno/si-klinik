@@ -445,7 +445,7 @@
                 <!---->
               </li>
               <li>
-                <a href="javascript:;" class="side-menu dropdown {{ $title === 'Wilayah' ? 'side-menu--active' : '' }}">
+                <a href="javascript:;" class="side-menu dropdown {{ $title === 'Wilayah' || $title === 'Pegawai' ? 'side-menu--active' : '' }}">
                   <div class="side-menu__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                       <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
@@ -462,7 +462,7 @@
                     </div>
                   </div>
                 </a>
-                <ul class="v-enter-active v-enter-to" style="display:  {{ $title === 'Wilayah' ? 'block' : 'none' }};">
+                <ul class="v-enter-active v-enter-to" style="display:  {{ $title === 'Wilayah' || $title === 'Pegawai' ? 'block' : 'none' }};">
                   <li>
                     <a href="{{ url('wilayah') }}" class="side-menu {{ $title === 'Wilayah' ? 'side-menu--active' : '' }}">
                       <div class="side-menu__icon">
@@ -477,7 +477,7 @@
                     <!---->
                   </li>
                   <li>
-                    <a href="{{ url('user') }}" class="side-menu">
+                    <a href="{{ url('user') }}" class="side-menu {{ $title === 'User' ? 'side-menu--active' : '' }}">
                       <div class="side-menu__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
@@ -490,7 +490,7 @@
                     <!---->
                   </li>
                   <li>
-                    <a href="{{ url('pegawai') }}" class="side-menu">
+                    <a href="{{ url('pegawai') }}" class="side-menu {{ $title === 'Pegawai' ? 'side-menu--active' : '' }}">
                       <div class="side-menu__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
