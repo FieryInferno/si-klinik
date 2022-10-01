@@ -477,7 +477,7 @@
                     <!---->
                   </li>
                   <li>
-                    <a href="http://rubick-vue.left4code.com/simple-menu/dashboard-overview-1" class="side-menu">
+                    <a href="{{ url('user') }}" class="side-menu">
                       <div class="side-menu__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
@@ -490,7 +490,7 @@
                     <!---->
                   </li>
                   <li>
-                    <a href="http://rubick-vue.left4code.com/top-menu/dashboard-overview-1" class="side-menu">
+                    <a href="{{ url('pegawai') }}" class="side-menu">
                       <div class="side-menu__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>

@@ -23,4 +23,5 @@ Route::post('/login', [App\Http\Controllers\LoginController::class, 'auth'])->na
 Route::middleware('auth')->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
   Route::resource('wilayah', App\Http\Controllers\WilayahController::class);
+  Route::resource('pegawai', App\Http\Controllers\PegawaiController::class);
 });
