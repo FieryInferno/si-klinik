@@ -24,4 +24,5 @@ Route::middleware('auth')->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
   Route::resource('wilayah', App\Http\Controllers\WilayahController::class);
   Route::resource('pegawai', App\Http\Controllers\PegawaiController::class);
+  Route::resource('user', App\Http\Controllers\UserController::class);
 });

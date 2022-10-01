@@ -13,21 +13,25 @@ class UserSeeder extends Seeder
   {
     DB::table('users')->insert([
       [
+        'pegawai_id' => '2',
         'username' => 'admin',
         'password' => Hash::make('admin'),
         'level' => 'admin',
       ],
       [
+        'pegawai_id' => '3',
         'username' => 'staff',
         'password' => Hash::make('staff'),
         'level' => 'staff',
       ],
       [
+        'pegawai_id' => '4',
         'username' => 'doctor',
         'password' => Hash::make('doctor'),
         'level' => 'doctor',
       ],
       [
+        'pegawai_id' => '5',
         'username' => 'billing',
         'password' => Hash::make('billing'),
         'level' => 'billing',

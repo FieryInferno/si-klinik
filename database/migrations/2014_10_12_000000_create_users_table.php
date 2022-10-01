@@ -10,6 +10,7 @@ return new class extends Migration
   {
     Schema::create('users', function (Blueprint $table) {
       $table->id();
+      $table->foreignId('pegawai_id')->constrained('pegawais')->onUpdate('cascade')->onDelete('cascade');
       $table->string('username');
       $table->string('password');
       $table->enum('level', ['admin', 'staff', 'doctor', 'billing',]);
