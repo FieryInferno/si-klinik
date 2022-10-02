@@ -6,6 +6,8 @@ use App\Models\Pasien;
 use App\Models\User;
 use App\Models\Tindakan;
 use App\Models\TindakanPasien;
+use App\Models\Obat;
+use App\Models\ObatPasien;
 use Illuminate\Http\Request;
 
 class PasienController extends Controller
@@ -67,6 +69,7 @@ class PasienController extends Controller
       'title' => 'Pasien',
       'data' => $pasien,
       'tindakan' => Tindakan::all(),
+      'obat' => Obat::all(),
     ]);
   }
 
@@ -78,5 +81,17 @@ class PasienController extends Controller
     ]);
     TindakanPasien::create($request->all());
     return redirect()->back()->with('success', 'Berhasil tambah tindakan pasien');
+  }
+
+  public function obatPasien(Request $request, $id)
+  {
+    $request->validate([
+      'obat_id' => 'required',
+      'jumlah' => 'required',
+      'dosis1' => 'required',
+      'dosis2' => 'required',
+    ]);
+    ObatPasien::create($request->all());
+    return redirect()->back()->with('success', 'Berhasil tambah obat pasien');
   }
 }

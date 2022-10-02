@@ -19,4 +19,9 @@ class Pasien extends Model
   {
     return $this->hasMany(TindakanPasien::class);
   }
+
+  public function obat()
+  {
+    return $this->hasMany(ObatPasien::class);
+  }
 }

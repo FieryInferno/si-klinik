@@ -30,5 +30,6 @@ Route::middleware('auth')->group(function () {
   Route::resource('pasien', App\Http\Controllers\PasienController::class);
   Route::get('pasien/{pasien}/periksa', [App\Http\Controllers\PasienController::class, 'periksa']);
   Route::post('tindakan-pasien/{pasien}', [App\Http\Controllers\PasienController::class, 'tindakanPasien']);
+  Route::post('obat-pasien/{pasien}', [App\Http\Controllers\PasienController::class, 'obatPasien']);
   Route::get('logout', [App\Http\Controllers\LoginController::class, 'logout']);
 });
