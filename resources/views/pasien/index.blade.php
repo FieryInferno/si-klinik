@@ -3,7 +3,9 @@
   <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">{{ $title }}</h2>
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-      <a class="btn btn-primary shadow-md mr-2" href="{{ url('pasien/create') }}">Tambah</a>
+      @if (auth()->user()->level === 'staff')
+        <a class="btn btn-primary shadow-md mr-2" href="{{ url('pasien/create') }}">Tambah</a>
+      @endif
     </div>
   </div>
   <div class="intro-y box p-5 mt-5">
@@ -18,7 +20,15 @@
           <tr>
             <th class="whitespace-nowrap">#</th>
             <th class="whitespace-nowrap">Nama Pasien</th>
-            <th class="whitespace-nowrap">Dokter</th>
+            @switch(auth()->user()->level)
+              @case('staff')
+                <th class="whitespace-nowrap">Dokter</th>
+                @break
+              @case('doctor')
+                <th class="whitespace-nowrap">Tindakan</th>
+                <th class="whitespace-nowrap">Obat</th>
+                @break
+            @endswitch
             <th class="whitespace-nowrap">Aksi</th>
           </tr>
         </thead>
@@ -28,10 +38,25 @@
             <tr>
               <td class="whitespace-nowrap">{{ $no++ }}</td>
               <td class="whitespace-nowrap">{{ $dataTable->nama }}</td>
-              <td class="whitespace-nowrap">{{ $dataTable->pegawai->nama }}</td>
+              @switch(auth()->user()->level)
+                @case('staff')
+                  <td class="whitespace-nowrap">{{ $dataTable->pegawai->nama }}</td>
+                  @break
+                @case('doctor')
+                  <td class="whitespace-nowrap">{{ $dataTable->pegawai->nama }}</td>
+                  <td class="whitespace-nowrap">{{ $dataTable->pegawai->nama }}</td>
+                  @break
+              @endswitch
               <td class="whitespace-nowrap">
-                <a href="{{ url('pasien/' . $dataTable->id . '/edit') }}" class="btn btn-success">Edit</a>
-                <button class="btn btn-danger showModal" data-target="deleteModal{{ $dataTable->id }}">Hapus</button>
+                @switch(auth()->user()->level)
+                  @case('staff')
+                    <a href="{{ url('pasien/' . $dataTable->id . '/edit') }}" class="btn btn-success">Edit</a>
+                    <button class="btn btn-danger showModal" data-target="deleteModal{{ $dataTable->id }}">Hapus</button>
+                    @break
+                  @case('doctor')
+                    <a href="{{ url('pasien/' . $dataTable->id . '/periksa') }}" class="btn btn-success">Periksa Pasien</a>
+                    @break
+                @endswitch
               </td>
             </tr>
           @endforeach

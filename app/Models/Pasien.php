@@ -14,4 +14,9 @@ class Pasien extends Model
   {
     return $this->hasOne(Pegawai::class, 'id', 'pegawai_id');
   }
+
+  public function tindakan()
+  {
+    return $this->hasMany(TindakanPasien::class);
+  }
 }

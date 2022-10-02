@@ -534,7 +534,7 @@
               @endif
               @if (auth()->user()->level === 'staff')
                 <li>
-                  <a href="{{ url('pasien') }}" class="side-menu">
+                  <a href="{{ url('pasien') }}" class="side-menu {{ $title === 'Pasien' ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
@@ -551,7 +551,7 @@
               @endif
               @if (auth()->user()->level === 'doctor')
                 <li>
-                  <a href="http://rubick-vue.left4code.com/inbox" class="side-menu">
+                  <a href="{{ url('pasien') }}" class="side-menu {{ $title === 'Pasien' ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                         <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
@@ -559,7 +559,7 @@
                       </svg>
                     </div>
                     <div class="side-menu__title">
-                      Tindakan dan Obat
+                      Tindakan dan Obat Pasien
                     </div>
                   </a>
                   <!---->
@@ -630,6 +630,7 @@
   <script>
     $(document).ready( function () {
       $('#myTable').DataTable();
+      $('.table').DataTable();
     } );
     const dropdown = document.getElementsByClassName("dropdown_menu"),
           modal = document.getElementsByClassName('showModal'),

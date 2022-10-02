@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use App\Models\User;
+use App\Models\Tindakan;
+use App\Models\TindakanPasien;
 use Illuminate\Http\Request;
 
 class PasienController extends Controller
@@ -57,5 +59,24 @@ class PasienController extends Controller
   {
     $pasien->delete();
     return redirect('pasien')->with('success', 'Berhasil hapus pasien');
+  }
+
+  public function periksa(Pasien $pasien)
+  {
+    return view('pasien.periksa', [
+      'title' => 'Pasien',
+      'data' => $pasien,
+      'tindakan' => Tindakan::all(),
+    ]);
+  }
+
+  public function tindakanPasien(Request $request, $id)
+  {
+    $request->validate([
+      'jumlah' => 'required',
+      'tindakan_id' => 'required',
+    ]);
+    TindakanPasien::create($request->all());
+    return redirect()->back()->with('success', 'Berhasil tambah tindakan pasien');
   }
 }
