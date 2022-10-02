@@ -444,137 +444,145 @@
                 </a>
                 <!---->
               </li>
-              <li>
-                <a href="javascript:;" class="side-menu dropdown dropdown_menu {{ $title === 'Wilayah' || $title === 'Pegawai' || $title === 'User' || $title === 'Tindakan' || $title === 'Obat' ? 'side-menu--active' : '' }}">
-                  <div class="side-menu__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-                      <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
-                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                      <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                    </svg>
-                  </div>
-                  <div class="side-menu__title">
-                    Master Data
-                    <div class="side-menu__sub-icon transform rotate-180">
+              @if (auth()->user()->level === 'admin')
+                <li>
+                  <a href="javascript:;" class="side-menu dropdown dropdown_menu {{ $title === 'Wilayah' || $title === 'Pegawai' || $title === 'User' || $title === 'Tindakan' || $title === 'Obat' ? 'side-menu--active' : '' }}">
+                    <div class="side-menu__icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-                        <polyline points="6 9 12 15 18 9"></polyline>
+                        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
                       </svg>
                     </div>
-                  </div>
-                </a>
-                <ul class="v-enter-active v-enter-to" style="display:  {{ $title === 'Wilayah' || $title === 'Pegawai' || $title === 'Obat' || $title === 'User' || $title === 'Tindakan' ? 'block' : 'none' }};">
-                  <li>
-                    <a href="{{ url('wilayah') }}" class="side-menu {{ $title === 'Wilayah' ? 'side-menu--active' : '' }}">
-                      <div class="side-menu__icon">
+                    <div class="side-menu__title">
+                      Master Data
+                      <div class="side-menu__sub-icon transform rotate-180">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-                          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                          <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                       </div>
-                      <div class="side-menu__title">
-                        Wilayah
-                      </div>
-                    </a>
-                    <!---->
-                  </li>
-                  <li>
-                    <a href="{{ url('user') }}" class="side-menu {{ $title === 'User' ? 'side-menu--active' : '' }}">
-                      <div class="side-menu__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-                          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                        </svg>
-                      </div>
-                      <div class="side-menu__title">
-                        User
-                      </div>
-                    </a>
-                    <!---->
-                  </li>
-                  <li>
-                    <a href="{{ url('pegawai') }}" class="side-menu {{ $title === 'Pegawai' ? 'side-menu--active' : '' }}">
-                      <div class="side-menu__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-                          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                        </svg>
-                      </div>
-                      <div class="side-menu__title">
-                        Pegawai
-                      </div>
-                    </a>
-                    <!---->
-                  </li>
-                  <li>
-                    <a href="{{ url('tindakan') }}" class="side-menu {{ $title === 'Tindakan' ? 'side-menu--active' : '' }}">
-                      <div class="side-menu__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-                          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                        </svg>
-                      </div>
-                      <div class="side-menu__title">
-                        Tindakan
-                      </div>
-                    </a>
-                    <!---->
-                  </li>
-                  <li>
-                    <a href="{{ url('obat') }}" class="side-menu {{ $title === 'Obat' ? 'side-menu--active' : '' }}">
-                      <div class="side-menu__icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-                          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                        </svg>
-                      </div>
-                      <div class="side-menu__title">
-                        Obat
-                      </div>
-                    </a>
-                    <!---->
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="javascript:;" class="side-menu">
-                  <div class="side-menu__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-                      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
-                      <line x1="3" y1="6" x2="21" y2="6"></line>
-                      <path d="M16 10a4 4 0 01-8 0"></path>
-                    </svg>
-                  </div>
-                  <div class="side-menu__title">
-                    Pendaftaran Pasien
-                  </div>
-                </a>
-                <!---->
-              </li>
-              <li>
-                <a href="http://rubick-vue.left4code.com/inbox" class="side-menu">
-                  <div class="side-menu__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-                      <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
-                      <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"></path>
-                    </svg>
-                  </div>
-                  <div class="side-menu__title">
-                    Tindakan dan Obat
-                  </div>
-                </a>
-                <!---->
-              </li>
-              <li>
-                <a href="http://rubick-vue.left4code.com/file-manager" class="side-menu">
-                  <div class="side-menu__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-                      <line x1="22" y1="12" x2="2" y2="12"></line>
-                      <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"></path>
-                      <line x1="6" y1="16" x2="6.01" y2="16"></line>
-                      <line x1="10" y1="16" x2="10.01" y2="16"></line>
-                    </svg>
-                  </div>
-                  <div class="side-menu__title">
-                    Tagihan
-                  </div>
-                </a>
-                <!---->
-              </li>
+                    </div>
+                  </a>
+                  <ul class="v-enter-active v-enter-to" style="display:  {{ $title === 'Wilayah' || $title === 'Pegawai' || $title === 'Obat' || $title === 'User' || $title === 'Tindakan' ? 'block' : 'none' }};">
+                    <li>
+                      <a href="{{ url('wilayah') }}" class="side-menu {{ $title === 'Wilayah' ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                          </svg>
+                        </div>
+                        <div class="side-menu__title">
+                          Wilayah
+                        </div>
+                      </a>
+                      <!---->
+                    </li>
+                    <li>
+                      <a href="{{ url('user') }}" class="side-menu {{ $title === 'User' ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                          </svg>
+                        </div>
+                        <div class="side-menu__title">
+                          User
+                        </div>
+                      </a>
+                      <!---->
+                    </li>
+                    <li>
+                      <a href="{{ url('pegawai') }}" class="side-menu {{ $title === 'Pegawai' ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                          </svg>
+                        </div>
+                        <div class="side-menu__title">
+                          Pegawai
+                        </div>
+                      </a>
+                      <!---->
+                    </li>
+                    <li>
+                      <a href="{{ url('tindakan') }}" class="side-menu {{ $title === 'Tindakan' ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                          </svg>
+                        </div>
+                        <div class="side-menu__title">
+                          Tindakan
+                        </div>
+                      </a>
+                      <!---->
+                    </li>
+                    <li>
+                      <a href="{{ url('obat') }}" class="side-menu {{ $title === 'Obat' ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                          </svg>
+                        </div>
+                        <div class="side-menu__title">
+                          Obat
+                        </div>
+                      </a>
+                      <!---->
+                    </li>
+                  </ul>
+                </li>
+              @endif
+              @if (auth()->user()->level === 'staff')
+                <li>
+                  <a href="{{ url('pasien') }}" class="side-menu">
+                    <div class="side-menu__icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 01-8 0"></path>
+                      </svg>
+                    </div>
+                    <div class="side-menu__title">
+                      Pasien
+                    </div>
+                  </a>
+                  <!---->
+                </li>
+              @endif
+              @if (auth()->user()->level === 'doctor')
+                <li>
+                  <a href="http://rubick-vue.left4code.com/inbox" class="side-menu">
+                    <div class="side-menu__icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                        <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                        <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"></path>
+                      </svg>
+                    </div>
+                    <div class="side-menu__title">
+                      Tindakan dan Obat
+                    </div>
+                  </a>
+                  <!---->
+                </li>
+              @endif
+              @if (auth()->user()->level === 'billing')
+                <li>
+                  <a href="http://rubick-vue.left4code.com/file-manager" class="side-menu">
+                    <div class="side-menu__icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                        <line x1="22" y1="12" x2="2" y2="12"></line>
+                        <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"></path>
+                        <line x1="6" y1="16" x2="6.01" y2="16"></line>
+                        <line x1="10" y1="16" x2="10.01" y2="16"></line>
+                      </svg>
+                    </div>
+                    <div class="side-menu__title">
+                      Tagihan
+                    </div>
+                  </a>
+                  <!---->
+                </li>
+              @endif
             </ul>
           </nav>
           <div class="content">

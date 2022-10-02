@@ -27,5 +27,6 @@ Route::middleware('auth')->group(function () {
   Route::resource('user', App\Http\Controllers\UserController::class);
   Route::resource('tindakan', App\Http\Controllers\TindakanController::class);
   Route::resource('obat', App\Http\Controllers\ObatController::class);
+  Route::resource('pasien', App\Http\Controllers\PasienController::class);
   Route::get('logout', [App\Http\Controllers\LoginController::class, 'logout']);
 });
