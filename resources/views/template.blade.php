@@ -445,7 +445,7 @@
                 <!---->
               </li>
               <li>
-                <a href="javascript:;" class="side-menu dropdown {{ $title === 'Wilayah' || $title === 'Pegawai' || $title === 'User' || $title === 'Tindakan' || $title === 'Obat' ? 'side-menu--active' : '' }}">
+                <a href="javascript:;" class="side-menu dropdown dropdown_menu {{ $title === 'Wilayah' || $title === 'Pegawai' || $title === 'User' || $title === 'Tindakan' || $title === 'Obat' ? 'side-menu--active' : '' }}">
                   <div class="side-menu__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                       <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
@@ -589,55 +589,17 @@
                 <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" aria-expanded="false" data-tw-toggle="dropdown" role="button">
                   <img src="{{ asset('images/user.jpg') }}" />
                 </div>
-                <div class="dropdown-menu w-56" id="_36jr2i1n9" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(0px, 32px);" data-popper-placement="bottom-end">
+                <div class="dropdown-menu w-56" id="_36jr2i1n9" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(0px, 32px) !important;" data-popper-placement="bottom-end">
                   <ul class="dropdown-content bg-primary text-white">
                     <li>
                       <div class="dropdown-header !font-normal">
-                        <div class="font-medium">Kevin Spacey</div>
-                        <div class="text-xs text-white/70 mt-0.5 dark:text-slate-500">Backend Engineer</div>
+                        <div class="font-medium">{{ auth()->user()->pegawai->nama }}</div>
+                        <div class="text-xs text-white/70 mt-0.5 dark:text-slate-500">{{ auth()->user()->level }}</div>
                       </div>
                     </li>
                     <li><hr class="dropdown-divider border-white/[0.08]" /></li>
                     <li>
-                      <a class="dropdown-item cursor-pointer hover:bg-white/5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 mr-2">
-                          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                          <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                        Profile
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item cursor-pointer hover:bg-white/5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 mr-2">
-                          <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path>
-                          <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                        </svg>
-                        Add Account
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item cursor-pointer hover:bg-white/5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 mr-2">
-                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                          <path d="M7 11V7a5 5 0 0110 0v4"></path>
-                        </svg>
-                        Reset Password
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item cursor-pointer hover:bg-white/5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 mr-2">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"></path>
-                          <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                        </svg>
-                        Help
-                      </a>
-                    </li>
-                    <li><hr class="dropdown-divider border-white/[0.08]" /></li>
-                    <li>
-                      <a class="dropdown-item cursor-pointer hover:bg-white/5">
+                      <a class="dropdown-item cursor-pointer hover:bg-white/5" href="{{ url('logout') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 mr-2">
                           <rect x="1" y="5" width="22" height="14" rx="7" ry="7"></rect>
                           <circle cx="16" cy="12" r="3"></circle>
@@ -661,8 +623,9 @@
     $(document).ready( function () {
       $('#myTable').DataTable();
     } );
-    const dropdown = document.getElementsByClassName("dropdown"),
-          modal = document.getElementsByClassName('showModal');
+    const dropdown = document.getElementsByClassName("dropdown_menu"),
+          modal = document.getElementsByClassName('showModal'),
+          dropdownUser = document.getElementsByClassName('dropdown-toggle');
     let i;
 
     for (i = 0; i < dropdown.length; i++) {
@@ -687,6 +650,12 @@
             modalContent.classList.toggle('show');
           }
         }
+      });
+    }
+
+    for (i = 0; i < dropdownUser.length; i++) {
+      dropdownUser[i].addEventListener("click", function() {
+        this.nextElementSibling.classList.toggle('show');
       });
     }
   </script>
