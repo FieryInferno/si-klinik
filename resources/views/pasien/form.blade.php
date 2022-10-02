@@ -6,7 +6,7 @@
         <h2 class="font-medium text-base mr-auto">{{ $title }}</h2>
       </div>
       <div class="p-5">
-        <form action="{{ isset($data) ? url('obat/' . $data->id) : url('obat') }}" method="POST">
+        <form action="{{ isset($data) ? url('pasien/' . $data->id) : url('pasien') }}" method="POST">
           @csrf
           {{ isset($data) ? method_field('PUT') : '' }}
           @if ($errors->any())
@@ -19,34 +19,23 @@
             </div>
           @endif
           <div>
-            <label class="form-label">Kode Obat</label>
+            <label class="form-label">Nama Pasien</label>
             <input
               type="text"
               class="form-control"
-              placeholder="Kode Obat"
-              name="kode"
-              value="{{ isset($data) ? $data->kode : '' }}"
-            />
-          </div>
-          <div>
-            <label class="form-label">Nama Obat</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Nama Obat"
+              placeholder="Nama Pasien"
               name="nama"
               value="{{ isset($data) ? $data->nama : '' }}"
             />
           </div>
           <div>
-            <label class="form-label">Harga</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Harga"
-              name="harga"
-              value="{{ isset($data) ? $data->harga : '' }}"
-            />
+            <label class="form-label">Dokter</label>
+            <select class="form-select mt-2 sm:mr-2" aria-label="Default select example" name="pegawai_id">
+              <option disabled selected>Pilih dokter</option>
+              @foreach ($pegawai as $p)
+                <option value="{{ $p->pegawai_id }}" <?= isset($data) && $data->pegawai_id === $p->pegawai_id ? 'selected' : ''; ?>>{{ $p->pegawai->nama }}</option>
+              @endforeach
+            </select>
           </div>
           <button class="btn btn-primary mt-5" type="submit">Submit</button>
         </form>

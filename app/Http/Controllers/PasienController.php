@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PasienController extends Controller
@@ -17,12 +18,18 @@ class PasienController extends Controller
 
   public function create()
   {
-    return view('pasien.form', ['title' => 'Pasien']);
+    return view('pasien.form', [
+      'title' => 'Pasien',
+      'pegawai' => User::where('level', '=', 'doctor')->get(),
+    ]);
   }
 
   public function store(Request $request)
   {
-    $request->validate(['nama' => 'required']);
+    $request->validate([
+      'nama' => 'required',
+      'pegawai_id' => 'required',
+    ]);
     Pasien::create($request->all());
     return redirect('pasien')->with('success', 'Berhasil tambah pasien');
   }
@@ -32,12 +39,16 @@ class PasienController extends Controller
     return view('pasien.form', [
       'title' => 'Pasien',
       'data' => $pasien,
+      'pegawai' => User::where('level', '=', 'doctor')->get(),
     ]);
   }
 
   public function update(Request $request, Pasien $pasien)
   {
-    $request->validate(['nama' => 'required']);
+    $request->validate([
+      'nama' => 'required',
+      'pegawai_id' => 'required',
+    ]);
     $pasien->update($request->all());
     return redirect('pasien')->with('success', 'Berhasil edit pasien');
   }

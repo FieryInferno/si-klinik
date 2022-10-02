@@ -18,7 +18,6 @@
           <tr>
             <th class="whitespace-nowrap">#</th>
             <th class="whitespace-nowrap">Nama Pasien</th>
-            <th class="whitespace-nowrap">Alamat</th>
             <th class="whitespace-nowrap">Dokter</th>
             <th class="whitespace-nowrap">Aksi</th>
           </tr>
@@ -29,7 +28,6 @@
             <tr>
               <td class="whitespace-nowrap">{{ $no++ }}</td>
               <td class="whitespace-nowrap">{{ $dataTable->nama }}</td>
-              <td class="whitespace-nowrap">{{ $dataTable->alamat }}</td>
               <td class="whitespace-nowrap">{{ $dataTable->pegawai->nama }}</td>
               <td class="whitespace-nowrap">
                 <a href="{{ url('pasien/' . $dataTable->id . '/edit') }}" class="btn btn-success">Edit</a>
