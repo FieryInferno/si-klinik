@@ -25,4 +25,5 @@ Route::middleware('auth')->group(function () {
   Route::resource('wilayah', App\Http\Controllers\WilayahController::class);
   Route::resource('pegawai', App\Http\Controllers\PegawaiController::class);
   Route::resource('user', App\Http\Controllers\UserController::class);
+  Route::resource('tindakan', App\Http\Controllers\TindakanController::class);
 });
