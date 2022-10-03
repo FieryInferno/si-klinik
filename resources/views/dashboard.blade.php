@@ -164,7 +164,9 @@
               </div>
             </div>
             <div class="report-chart">
-              <div style="height: 275px;"><canvas class="mt-6 -mb-6" style="display: block; box-sizing: border-box; height: 275px; width: 453px;" width="453" height="275"></canvas></div>
+              <div style="height: 275px;">
+                <canvas class="mt-6 -mb-6" style="display: block; box-sizing: border-box; height: 275px; width: 453px;" width="453" height="275"></canvas>
+              </div>
             </div>
           </div>
         </div>

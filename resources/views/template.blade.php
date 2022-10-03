@@ -433,7 +433,7 @@
             <div class="side-nav__devider my-6"></div>
             <ul>
               <li>
-                <a href="#" class="side-menu {{ $title === 'Dashboard' ? 'side-menu--active' : '' }}">
+                <a href="{{ url('dashboard') }}" class="side-menu {{ $title === 'Dashboard' ? 'side-menu--active' : '' }}">
                   <div class="side-menu__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                       <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -567,7 +567,7 @@
               @endif
               @if (auth()->user()->level === 'billing')
                 <li>
-                  <a href="http://rubick-vue.left4code.com/file-manager" class="side-menu">
+                  <a href="{{ url('tagihan') }}" class="side-menu {{ $title === 'Tagihan' ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
                         <line x1="22" y1="12" x2="2" y2="12"></line>

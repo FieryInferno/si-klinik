@@ -34,7 +34,13 @@ class PasienController extends Controller
       'nama' => 'required',
       'pegawai_id' => 'required',
     ]);
-    Pasien::create($request->all());
+
+    $pasien = new Pasien;
+    $pasien->nama = $request->nama;
+    $pasien->pegawai_id = $request->pegawai_id;
+    $pasien->status = 'waitlist';
+    
+    $pasien->save();
     return redirect('pasien')->with('success', 'Berhasil tambah pasien');
   }
 
@@ -93,5 +99,13 @@ class PasienController extends Controller
     ]);
     ObatPasien::create($request->all());
     return redirect()->back()->with('success', 'Berhasil tambah obat pasien');
+  }
+
+  public function bayar(Pasien $pasien)
+  {
+    $pasien->status = 'bayar';
+
+    $pasien->save();
+    return redirect('tagihan')->with('success', 'Berhasil ubah pasien');
   }
 }

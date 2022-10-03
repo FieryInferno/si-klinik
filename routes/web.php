@@ -28,7 +28,9 @@ Route::middleware('auth')->group(function () {
   Route::resource('tindakan', App\Http\Controllers\TindakanController::class);
   Route::resource('obat', App\Http\Controllers\ObatController::class);
   Route::resource('pasien', App\Http\Controllers\PasienController::class);
+  Route::resource('tagihan', App\Http\Controllers\TagihanController::class);
   Route::get('pasien/{pasien}/periksa', [App\Http\Controllers\PasienController::class, 'periksa']);
+  Route::post('pasien/{pasien}/bayar', [App\Http\Controllers\PasienController::class, 'bayar']);
   Route::post('tindakan-pasien/{pasien}', [App\Http\Controllers\PasienController::class, 'tindakanPasien']);
   Route::post('obat-pasien/{pasien}', [App\Http\Controllers\PasienController::class, 'obatPasien']);
   Route::get('logout', [App\Http\Controllers\LoginController::class, 'logout']);
