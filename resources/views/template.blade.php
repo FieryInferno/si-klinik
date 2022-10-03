@@ -627,6 +627,7 @@
   </body>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     $(document).ready( function () {
       $('#myTable').DataTable();
@@ -667,5 +668,40 @@
         this.nextElementSibling.classList.toggle('show');
       });
     }
+
+    <?php
+      if ($title === 'Dashboard' && isset($dataGrafik)) { ?>
+      const labels = [],
+            dataBulan = [];
+
+      <?php
+        foreach ($dataGrafik as $key => $value) { ?>
+          labels.push('{{ $key }}');
+          dataBulan.push({{ $value }});
+        <?php }
+      ?>
+
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'My First dataset',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: dataBulan,
+        }]
+      };
+
+      const config = {
+        type: 'line',
+        data: data,
+        options: {}
+      };
+      
+      const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+      <?php }
+    ?>
   </script>
 </html>

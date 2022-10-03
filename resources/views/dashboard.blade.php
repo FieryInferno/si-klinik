@@ -133,40 +133,8 @@
             </div>
           </div>
           <div class="intro-y box p-5 mt-12 sm:mt-5">
-            <div class="flex flex-col md:flex-row md:items-center">
-              <div class="flex">
-                <div>
-                  <div class="text-primary dark:text-slate-300 text-lg xl:text-xl font-medium">$15,000</div>
-                  <div class="mt-0.5 text-slate-500">This Month</div>
-                </div>
-                <div class="w-px h-12 border border-r border-dashed border-slate-200 dark:border-darkmode-300 mx-4 xl:mx-5"></div>
-                <div>
-                  <div class="text-slate-500 text-lg xl:text-xl font-medium">$10,000</div>
-                  <div class="mt-0.5 text-slate-500">Last Month</div>
-                </div>
-              </div>
-              <div class="dropdown md:ml-auto mt-5 md:mt-0" data-tw-placement="bottom-end">
-                <button class="dropdown-toggle btn btn-outline-secondary font-normal" aria-expanded="false" data-tw-toggle="dropdown">
-                  Filter by Category
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 ml-2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div class="dropdown-menu w-40">
-                  <ul class="dropdown-content overflow-y-auto h-32">
-                    <li><a class="dropdown-item cursor-pointer">PC &amp; Laptop</a></li>
-                    <li><a class="dropdown-item cursor-pointer">Smartphone</a></li>
-                    <li><a class="dropdown-item cursor-pointer">Electronic</a></li>
-                    <li><a class="dropdown-item cursor-pointer">Photography</a></li>
-                    <li><a class="dropdown-item cursor-pointer">Sport</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
             <div class="report-chart">
-              <div style="height: 275px;">
-                <canvas class="mt-6 -mb-6" style="display: block; box-sizing: border-box; height: 275px; width: 453px;" width="453" height="275"></canvas>
-              </div>
+              <canvas class="mt-6 -mb-6" style="display: block; box-sizing: border-box; height: 275px; width: 453px;" width="453" height="275" id="myChart"></canvas>
             </div>
           </div>
         </div>
