@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
+use App\Models\Pegawai;
+use App\Models\Tindakan;
+use App\Models\Obat;
 
 class DashboardController extends Controller
 {
@@ -30,7 +33,11 @@ class DashboardController extends Controller
 
     return view('dashboard', [
       'title' => 'Dashboard',
-      'dataGrafik' => $dataGrafik, 
+      'dataGrafik' => $dataGrafik,
+      'pegawai' => Pegawai::count(),
+      'tindakan' => Tindakan::count(),
+      'obat' => Obat::count(),
+      'pasien' => Pasien::count(),
     ]);
   }
 }
